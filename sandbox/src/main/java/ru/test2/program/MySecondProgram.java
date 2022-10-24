@@ -5,13 +5,14 @@ public class MySecondProgram {
 
     Point p1 = new Point(1, 2);
     Point p2 = new Point(2, 4);
-    Point p = new Point(1, 2, 2, 4);
+    p1.distance(p2);
+
 
 
     //дистанция между точками при использовании функции
     System.out.println("расстояния между точками 1" + "(" + p1.x1 + "," + p1.y1 + ")" + " и " + "(" + p2.x2 + "," + p2.y2 + ")" + " = " + distance(p1, p2));
     //дистанция между точками при использовании метода
-    System.out.println("расстояния между точками 2" + "(" + p.x1 + "," + p.y1 + ")" + " и " + "(" + p.x2 + "," + p.y2 + ")" + " = " + p.distance());
+    System.out.println("расстояния между точками 2" + "(" + p1.x1 + "," + p1.y1 + ")" + " и " + "(" + p2.x2 + "," + p2.y2 + ")" + " = " + p1.distance(p2));
 
   }
 
