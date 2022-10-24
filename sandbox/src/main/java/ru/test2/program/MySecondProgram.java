@@ -5,7 +5,7 @@ public class MySecondProgram {
 
     Point p1 = new Point(1, 2);
     Point p2 = new Point(2, 4);
-    
+
 
     //дистанция между точками при использовании функции
     System.out.println("расстояния между точками 1" + "(" + p1.x1 + "," + p1.y1 + ")" + " и " + "(" + p2.x2 + "," + p2.y2 + ")" + " = " + distance(p1, p2));
