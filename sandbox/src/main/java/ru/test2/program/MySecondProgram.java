@@ -8,13 +8,13 @@ public class MySecondProgram {
 
 
     //дистанция между точками при использовании функции
-    System.out.println("расстояния между точками 1" + "(" + p1.x1 + "," + p1.y1 + ")" + " и " + "(" + p2.x2 + "," + p2.y2 + ")" + " = " + distance(p1, p2));
+    System.out.println("расстояния между точками 1" + "(" + p1.x + "," + p1.y + ")" + " и " + "(" + p2.x + "," + p2.y + ")" + " = " + distance(p1, p2));
     //дистанция между точками при использовании метода
-    System.out.println("расстояния между точками 2" + "(" + p1.x1 + "," + p1.y1 + ")" + " и " + "(" + p2.x2 + "," + p2.y2 + ")" + " = " + p1.distance(p2));
+    System.out.println("расстояния между точками 2" + "(" + p1.x + "," + p1.y + ")" + " и " + "(" + p2.x + "," + p2.y + ")" + " = " + p1.distance(p2));
 
   }
 
   public static double distance(Point p1, Point p2) {
-    return Math.sqrt((p2.x2 - p1.x1) * (p2.x2 - p1.x1) + (p2.y2 - p1.y1) * (p2.y2 - p1.y1));
+    return Math.sqrt((p2.x - p1.x) * (p2.x - p1.x) + (p2.y - p1.y) * (p2.y - p1.y));
   }
 }
