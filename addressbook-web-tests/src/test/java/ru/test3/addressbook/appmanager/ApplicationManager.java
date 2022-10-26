@@ -10,7 +10,7 @@ import java.time.Duration;
 public class ApplicationManager {
   WebDriver wd;
   private SessionHelper sessionHelper;
-  private  ContactHelper contactHelper;
+  private ContactHelper contactHelper;
 
   public void init() {
     System.setProperty("webdriver.chrome.driver", "/Users/apple2/Documents/driver/chromedriver");
@@ -18,10 +18,9 @@ public class ApplicationManager {
     wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     wd.get("http://localhost/addressbook/edit.php");
     contactHelper = new ContactHelper(wd);
-    sessionHelper=new SessionHelper(wd);
+    sessionHelper = new SessionHelper(wd);
     sessionHelper.login("admin", "secret");
   }
-
 
 
   public void logout() {
@@ -40,7 +39,6 @@ public class ApplicationManager {
       return false;
     }
   }
-
 
 
   public ContactHelper getContactHelper() {

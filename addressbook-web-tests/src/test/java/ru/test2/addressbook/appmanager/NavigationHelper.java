@@ -3,7 +3,7 @@ package ru.test2.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class NavigationHelper  extends BaseHelper {
+public class NavigationHelper extends BaseHelper {
 
 
   public NavigationHelper(WebDriver wd) {
@@ -11,6 +11,6 @@ public class NavigationHelper  extends BaseHelper {
   }
 
   public void goToGroupPage() {
-   click(By.linkText("groups"));
+    click(By.linkText("groups"));
   }
 }

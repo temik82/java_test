@@ -11,8 +11,8 @@ public class SessionHelper extends BaseHelper {
   }
 
   public void login(String login, String password) {
-    type(By.name("user"),login);
-    type(By.name("pass"),password);
+    type(By.name("user"), login);
+    type(By.name("pass"), password);
     click(By.xpath("//input[@value='Login']"));
   }
 }

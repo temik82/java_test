@@ -20,7 +20,7 @@ public class ApplicationManager {
     wd.get("http://localhost/addressbook/group.php");
     groupHelper = new GroupHelper(wd);
     navigationHelper = new NavigationHelper(wd);
-    sessionHelper=new SessionHelper(wd);
+    sessionHelper = new SessionHelper(wd);
     sessionHelper.login("admin", "secret");
   }
 
@@ -37,7 +37,6 @@ public class ApplicationManager {
       return false;
     }
   }
-
 
 
   public GroupHelper getGroupHelper() {

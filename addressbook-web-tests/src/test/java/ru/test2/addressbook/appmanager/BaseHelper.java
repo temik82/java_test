@@ -8,7 +8,7 @@ public class BaseHelper {
   protected WebDriver wd;
 
   public BaseHelper(WebDriver wd) {
-    this.wd=wd;
+    this.wd = wd;
   }
 
   protected void type(By locator, String text) {
@@ -20,6 +20,7 @@ public class BaseHelper {
   protected void click(By locator) {
     wd.findElement(locator).click();
   }
+
   public boolean isAlertPresent() {
     try {
       wd.switchTo().alert();

@@ -2,7 +2,7 @@ package ru.test2.addressbook.model;
 
 import java.util.Objects;
 
-public  class GroupData {
+public class GroupData {
   private final String name;
   private final String header;
   private final String footer;
