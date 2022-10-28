@@ -31,4 +31,17 @@ public class ContactHelper extends BaseHelper {
     click(By.linkText("add new"));
     wd.get("http://localhost/addressbook/edit.php");
   }
+
+  public void selectContact() {
+    click(By.name("selected[]"));
+  }
+
+  public void initContactModification() {
+    click(By.xpath("//img[@alt='Details']"));
+    click(By.name("modifiy"));
+  }
+
+  public void submitContactModification() {
+    click(By.name("update"));
+  }
 }
