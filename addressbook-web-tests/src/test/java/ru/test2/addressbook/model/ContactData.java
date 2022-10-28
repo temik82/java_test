@@ -1,4 +1,4 @@
-package ru.test3.addressbook.model;
+package ru.test2.addressbook.model;
 
 import java.util.Objects;
 

@@ -1,8 +1,9 @@
-package ru.test3.addressbook.appmanager;
+package ru.test2.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import ru.test3.addressbook.model.ContactData;
+import ru.test3.addressbook.appmanager.BaseHelper;
+import ru.test2.addressbook.model.ContactData;
 
 public class ContactHelper extends BaseHelper {
 

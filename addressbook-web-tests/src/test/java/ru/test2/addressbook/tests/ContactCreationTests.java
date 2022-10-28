@@ -1,7 +1,8 @@
-package ru.test3.addressbook.tests;
+package ru.test2.addressbook.tests;
 
 import org.testng.annotations.*;
-import ru.test3.addressbook.model.ContactData;
+import ru.test2.addressbook.model.ContactData;
+
 
 
 public class ContactCreationTests extends TestBase {
@@ -13,7 +14,7 @@ public class ContactCreationTests extends TestBase {
     app.getContactHelper().fillContactData(new ContactData("Petr", "Petrov", "89777777771", "test1@test.ru"));
     app.getContactHelper().submit();
     app.getContactHelper().returnToHomePage();
-    app.logout();
+
   }
 
 
