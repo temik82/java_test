@@ -2,9 +2,15 @@ package ru.test2.addressbook.tests;
 
 import org.testng.annotations.Test;
 
-public class ContactDeletionTests {
+public class ContactDeletionTests extends TestBase {
   @Test
   public void testContactDeletion (){
+    app.getNavigationHelper().goToContactPage();
+    app.getContactHelper().selectContact();
+    app.getContactHelper().deleteSelectedContact();
+    app.getContactHelper().switchAlertYes();
+    app.getContactHelper().returnToHomePage();
+
 
   }
 }
