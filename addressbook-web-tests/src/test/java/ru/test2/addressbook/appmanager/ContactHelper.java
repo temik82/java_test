@@ -2,7 +2,7 @@ package ru.test2.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import ru.test3.addressbook.appmanager.BaseHelper;
+
 import ru.test2.addressbook.model.ContactData;
 
 public class ContactHelper extends BaseHelper {
@@ -21,10 +21,10 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void fillContactData(ContactData contactData) {
-    type("firstname", By.name("firstname"), contactData.firstName());
-    type("lastname", By.name("lastname"), contactData.lastNane());
-    type("mobile", By.name("mobile"), contactData.phone());
-    type("email", By.name("email"), contactData.email());
+    type(By.name("firstname"), contactData.firstName());
+    type(By.name("lastname"), contactData.lastNane());
+    type(By.name("mobile"), contactData.phone());
+    type(By.name("email"), contactData.email());
   }
 
   public void initContactCreation() {

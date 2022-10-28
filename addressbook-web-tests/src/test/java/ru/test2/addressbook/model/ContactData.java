@@ -2,7 +2,7 @@ package ru.test2.addressbook.model;
 
 import java.util.Objects;
 
-public final class ContactData {
+public class ContactData {
   private final String firstName;
   private final String lastNane;
   private final String phone;
