@@ -3,6 +3,7 @@ package ru.test2.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import org.openqa.selenium.support.ui.Select;
 import ru.test2.addressbook.model.ContactData;
 
 public class ContactHelper extends BaseHelper {
@@ -25,6 +26,11 @@ public class ContactHelper extends BaseHelper {
     type(By.name("lastname"), contactData.lastNane());
     type(By.name("mobile"), contactData.phone());
     type(By.name("email"), contactData.email());
+
+    if (isElementPresent(By.name("new_group"))) {
+      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+    }
+
   }
 
   public void initContactCreation() {
