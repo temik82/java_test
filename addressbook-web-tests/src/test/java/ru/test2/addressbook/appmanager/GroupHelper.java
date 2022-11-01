@@ -2,6 +2,7 @@ package ru.test2.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import ru.test2.addressbook.model.ContactData;
 import ru.test2.addressbook.model.GroupData;
 
 public class GroupHelper extends BaseHelper {
@@ -54,4 +55,6 @@ public class GroupHelper extends BaseHelper {
   public boolean isThereAGroup() {
     return isElementPresent(By.name("selected[]"));
   }
+
+
 }

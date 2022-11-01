@@ -3,11 +3,11 @@ package ru.test2.addressbook.tests;
 import org.testng.annotations.Test;
 import ru.test2.addressbook.model.GroupData;
 
-public class GroupModificationTests extends TestBase{
+public class GroupModificationTests extends TestBase {
   @Test
   public void testGroupModification() {
     app.getNavigationHelper().goToGroupPage();
-    if(! app.getGroupHelper().isThereAGroup()){
+    if (!app.getGroupHelper().isThereAGroup()) {
       app.getGroupHelper().createGroup(new GroupData("test1", null, null));
     }
     app.getGroupHelper().selectGroup();
