@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
 
 public class BaseHelper {
   protected WebDriver wd;
@@ -43,5 +44,15 @@ public class BaseHelper {
     } catch (NoSuchElementException ex) {
       return false;
     }
+  }
+
+  protected boolean isFirstGroupAtListPresent(By locator) {
+    try {
+      new Select(wd.findElement(locator)).selectByIndex(1);
+      return true;
+    } catch (NoSuchElementException ex) {
+      return false;
+    }
+
   }
 }
