@@ -5,6 +5,27 @@ import java.util.Objects;
 public class GroupData {
   private final String name;
   private final String header;
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    GroupData groupData = (GroupData) o;
+    return Objects.equals(name, groupData.name);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(name);
+  }
+
+  @Override
+  public String toString() {
+    return "GroupData{" +
+            "name='" + name + '\'' +
+            '}';
+  }
+
   private final String footer;
 
   public GroupData(String name, String header, String footer) {
@@ -23,29 +44,6 @@ public class GroupData {
 
   public String footer() {
     return footer;
-  }
-
-  @Override
-  public boolean equals(Object obj) {
-    if (obj == this) return true;
-    if (obj == null || obj.getClass() != this.getClass()) return false;
-    var that = (GroupData) obj;
-    return Objects.equals(this.name, that.name) &&
-            Objects.equals(this.header, that.header) &&
-            Objects.equals(this.footer, that.footer);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(name, header, footer);
-  }
-
-  @Override
-  public String toString() {
-    return "GroupData[" +
-            "name=" + name + ", " +
-            "header=" + header + ", " +
-            "footer=" + footer + ']';
   }
 
 }
