@@ -1,7 +1,11 @@
 package ru.test2.addressbook.tests;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.test2.addressbook.model.ContactData;
+
+import java.util.Comparator;
+import java.util.List;
 
 public class ContactDeletionTests extends TestBase {
   @Test
@@ -10,11 +14,24 @@ public class ContactDeletionTests extends TestBase {
     if (!app.getContactHelper().isThereAContact()) {
       app.getContactHelper().createContact(new ContactData("Petr", "Petrov", "89777777771", "test1@test.ru"));
     }
-    app.getContactHelper().selectContact();
+    List<ContactData> before=app.getContactHelper().getContactList();
+    app.getContactHelper().selectContact(before.size()-1);
     app.getContactHelper().deleteSelectedContact();
     app.getContactHelper().switchAlertYes();
     app.getContactHelper().returnToHomePage();
+    List<ContactData> after=app.getContactHelper().getContactList();
+    Assert.assertEquals(after.size(),before.size()-1);
+    before.remove(before.size()-1);
+    Comparator<? super ContactData> byId=(c1, c2)->Integer.compare(c1.getId(),c2.getId());
+    before.sort(byId);
+    after.sort(byId);
+    System.out.println(before);
+    System.out.println(after);
+
+    Assert.assertEquals(before,after);
+
+    }
 
 
-  }
+
 }

@@ -3,9 +3,7 @@ package ru.test2.addressbook.model;
 import java.util.Objects;
 
 public class GroupData {
-  public void setId(int id) {
-    this.id = id;
-  }
+
 
   private  int id;
   private final String name;
@@ -24,7 +22,9 @@ public class GroupData {
   public int hashCode() {
     return Objects.hash(name);
   }
-
+  public void setId(int id) {
+    this.id = id;
+  }
   public GroupData(String name, String header, String footer) {
     this.id=Integer.MAX_VALUE;
     this.name = name;
