@@ -19,7 +19,7 @@ public class ContactHelper extends BaseHelper {
 
   public void returnToHomePage() {
     click(By.linkText("home"));
-    wd.get("http://localhost/addressbook/");
+    //wd.get("http://localhost/addressbook/");
   }
 
   public void submit() {
@@ -56,11 +56,11 @@ public class ContactHelper extends BaseHelper {
 
   public void initContactModification() {
     click(By.xpath("//img[@alt='Details']"));
-    click(By.name("modifiy"));
+    click(By.xpath("//input[@name='modifiy']"));
   }
 
   public void submitContactModification() {
-    click(By.name("update"));
+    click(By.xpath("//input[@name='update']"));
   }
 
   public void deleteSelectedContact() {
@@ -90,16 +90,15 @@ public class ContactHelper extends BaseHelper {
 
 
   public List<ContactData> getContactList() {
-    List<ContactData> contacts=new ArrayList<ContactData>();
-    List<WebElement> elements=wd.findElements(By.name("entry"));
+    List<ContactData> contacts = new ArrayList<ContactData>();
+    List<WebElement> elements = wd.findElements(By.name("entry"));
     for (WebElement element : elements) {
-      List<WebElement> cells=element.findElements(By.tagName("td"));
-      String lastName=cells.get(1).getText();
-      String firstName=cells.get(2).getText();
-      int id=Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-     ContactData contact=new ContactData(id,firstName,lastName,null,null);
-     System.out.println(contact);
-     contacts.add(contact);
+      List<WebElement> cells = element.findElements(By.tagName("td"));
+      String lastName = cells.get(1).getText();
+      String firstName = cells.get(2).getText();
+      int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+      ContactData contact = new ContactData(id, firstName, lastName, null, null);
+      contacts.add(contact);
     }
     return contacts;
   }

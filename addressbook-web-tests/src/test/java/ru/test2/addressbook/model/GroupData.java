@@ -5,7 +5,7 @@ import java.util.Objects;
 public class GroupData {
 
 
-  private  int id;
+  private int id;
   private final String name;
   private final String header;
   private final String footer;
@@ -22,11 +22,13 @@ public class GroupData {
   public int hashCode() {
     return Objects.hash(name);
   }
+
   public void setId(int id) {
     this.id = id;
   }
+
   public GroupData(String name, String header, String footer) {
-    this.id=Integer.MAX_VALUE;
+    this.id = Integer.MAX_VALUE;
     this.name = name;
     this.header = header;
     this.footer = footer;
@@ -34,13 +36,15 @@ public class GroupData {
 
 
   public GroupData(int id, String name, String header, String footer) {
-    this.id=id;
+    this.id = id;
     this.name = name;
     this.header = header;
     this.footer = footer;
   }
 
-  public String name() { return name; }
+  public String name() {
+    return name;
+  }
 
   @Override
   public String toString() {

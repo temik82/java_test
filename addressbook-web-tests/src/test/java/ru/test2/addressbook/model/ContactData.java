@@ -3,8 +3,7 @@ package ru.test2.addressbook.model;
 import java.util.Objects;
 
 public class ContactData {
-  private  int id;
-
+  private int id;
 
 
   private final String firstName;
@@ -25,12 +24,13 @@ public class ContactData {
   public int getId() {
     return id;
   }
+
   public void setId(int id) {
     this.id = id;
   }
 
   public ContactData(int id, String firstName, String lastName, String phone, String email) {
-    this.id=id;
+    this.id = id;
     this.firstName = firstName;
     this.lastName = lastName;
     this.phone = phone;
@@ -52,7 +52,7 @@ public class ContactData {
   }
 
   public ContactData(String firstName, String lastName, String phone, String email) {
-    this.id=Integer.MAX_VALUE;
+    this.id = Integer.MAX_VALUE;
     this.firstName = firstName;
     this.lastName = lastName;
     this.phone = phone;
