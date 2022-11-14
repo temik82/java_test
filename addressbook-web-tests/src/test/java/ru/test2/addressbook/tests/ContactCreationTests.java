@@ -6,7 +6,6 @@ import org.testng.annotations.Test;
 import ru.test2.addressbook.model.ContactData;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 
