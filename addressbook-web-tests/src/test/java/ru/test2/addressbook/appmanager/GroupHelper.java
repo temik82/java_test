@@ -3,11 +3,12 @@ package ru.test2.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import ru.test2.addressbook.model.ContactData;
 import ru.test2.addressbook.model.GroupData;
+import ru.test2.addressbook.model.Groups;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class GroupHelper extends BaseHelper {
 
@@ -37,8 +38,10 @@ public class GroupHelper extends BaseHelper {
     click(By.name("delete"));
   }
 
-  public void selectGroup(int index) {
-    wd.findElements(By.name("selected[]")).get(index).click();
+
+
+  public void selectGroupById(int id) {
+    wd.findElement(By.cssSelector("input[value='"+id+"']")).click();
 
   }
 
@@ -50,7 +53,7 @@ public class GroupHelper extends BaseHelper {
     click(By.name("update"));
   }
 
-  public void createGroup(GroupData group) {
+  public void create(GroupData group) {
     initGroupCreation();
     fillGroupForm(group);
     submitGroupCreation();
@@ -61,21 +64,38 @@ public class GroupHelper extends BaseHelper {
     return isElementPresent(By.name("selected[]"));
   }
 
+  public void modify(GroupData group) {
+    selectGroupById(group.getId());
+    initGroupModification();
+    fillGroupForm(group);
+    submitGroupModification();
+    returnToGroupPage();
+  }
+
+
+
+  public void delete(GroupData group) {
+    selectGroupById(group.getId());
+    deleteSelectedGroup();
+    returnToGroupPage();
+  }
+
 
   public int getGroupCount() {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<GroupData> getGroupList() {
-    List<GroupData> groups = new ArrayList<GroupData>();
+
+  public Groups all() {
+    Groups groups = new Groups();
     List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));
     for (WebElement element : elements) {
       String name = element.getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-      GroupData group = new GroupData(id, name, null, null);
-      System.out.println(group);
-      groups.add(group);
+      groups.add(new GroupData().withId(id).withName(name));
     }
     return groups;
   }
+
+
 }

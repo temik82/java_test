@@ -10,7 +10,7 @@ public class NavigationHelper extends BaseHelper {
     super(wd);
   }
 
-  public void goToGroupPage() {
+  public void groupPage() {
     click(By.linkText("groups"));
   }
 
