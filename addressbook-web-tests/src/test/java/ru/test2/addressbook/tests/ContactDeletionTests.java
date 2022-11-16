@@ -1,6 +1,7 @@
 package ru.test2.addressbook.tests;
 
 import org.testng.Assert;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.test2.addressbook.model.ContactData;
 
@@ -8,12 +9,15 @@ import java.util.Comparator;
 import java.util.List;
 
 public class ContactDeletionTests extends TestBase {
-  @Test(enabled = false)
-  public void testContactDeletion() {
+  @BeforeMethod
+  public void ensurePreconditions(){
     app.goTo().goToContactPage();
     if (!app.getContactHelper().isThereAContact()) {
       app.getContactHelper().createContact(new ContactData("Petr", "Petrov", "89777777771", "test1@test.ru"));
     }
+  }
+  @Test(enabled = false)
+  public void testContactDeletion() {
     List<ContactData> before = app.getContactHelper().getContactList();
     app.getContactHelper().selectContact(before.size() - 1);
     app.getContactHelper().deleteSelectedContact();
