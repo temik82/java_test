@@ -3,8 +3,7 @@ package ru.test2.addressbook.model;
 import java.util.Objects;
 
 public class ContactData {
-  private int id;
-
+  private int id=Integer.MAX_VALUE;
 
   private  String firstName;
   private String lastName;
@@ -25,18 +24,31 @@ public class ContactData {
     return id;
   }
 
-  public void setId(int id) {
+  public ContactData withId(int id) {
     this.id = id;
+    return this;
   }
-
-  public ContactData(int id, String firstName, String lastName, String phone, String email) {
-    this.id = id;
+  public ContactData withFirstName(String firstName) {
     this.firstName = firstName;
-    this.lastName = lastName;
-    this.phone = phone;
-    this.email = email;
-
+    return this;
   }
+
+  public ContactData withLastName(String lastName) {
+    this.lastName = lastName;
+    return this;
+  }
+
+  public ContactData withPhone(String phone) {
+    this.phone = phone;
+    return this;
+  }
+
+  public ContactData withEmail(String email) {
+    this.email = email;
+    return this;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -51,14 +63,7 @@ public class ContactData {
     return Objects.hash(firstName, lastName);
   }
 
-  public ContactData(String firstName, String lastName, String phone, String email) {
-    this.id = Integer.MAX_VALUE;
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.phone = phone;
-    this.email = email;
 
-  }
 
   public String firstName() {
     return firstName;

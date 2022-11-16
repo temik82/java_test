@@ -16,7 +16,8 @@ public class ContactCreationTests extends TestBase {
   public void testContactCreation() throws Exception {
     app.goTo().contactPage();
     List<ContactData> before = app.contact().list();
-    ContactData contact = new ContactData("Sergey", "Sidorov", "9777777777", "test@test.ru");
+    ContactData contact = new ContactData().withFirstName("Sergey")
+            .withLastName("Sidorov").withPhone("9777777777").withEmail("test@test.ru");
     app.contact().create(contact);
     List<ContactData> after = app.contact().list();
     Assert.assertEquals(after.size(), before.size() + 1);
