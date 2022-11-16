@@ -6,10 +6,10 @@ public class ContactData {
   private int id;
 
 
-  private final String firstName;
-  private final String lastName;
-  private final String phone;
-  private final String email;
+  private  String firstName;
+  private String lastName;
+  private String phone;
+  private  String email;
 
 
   @Override
