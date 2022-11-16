@@ -17,7 +17,7 @@ public class ContactDeletionTests extends TestBase {
               .withFirstName("Petr").withLastName("Petrov").withPhone("89777777771").withEmail("test1@test.ru"));
     }
   }
-  @Test(enabled = false)
+  @Test
   public void testContactDeletion() {
     List<ContactData> before = app.contact().list();
     int index=before.size() - 1;
