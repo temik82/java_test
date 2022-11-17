@@ -5,9 +5,9 @@ import java.util.Objects;
 public class GroupData {
 
 
-  private int id=Integer.MAX_VALUE;
-  private  String name;
-  private  String header;
+  private int id = Integer.MAX_VALUE;
+  private String name;
+  private String header;
 
   public GroupData withName(String name) {
     this.name = name;
@@ -24,7 +24,7 @@ public class GroupData {
     return this;
   }
 
-  private  String footer;
+  private String footer;
 
   @Override
   public boolean equals(Object o) {
@@ -43,7 +43,6 @@ public class GroupData {
     this.id = id;
     return this;
   }
-
 
 
   public String name() {

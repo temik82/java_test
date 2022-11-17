@@ -6,9 +6,7 @@ import org.openqa.selenium.WebElement;
 import ru.test2.addressbook.model.GroupData;
 import ru.test2.addressbook.model.Groups;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class GroupHelper extends BaseHelper {
 
@@ -39,9 +37,8 @@ public class GroupHelper extends BaseHelper {
   }
 
 
-
   public void selectGroupById(int id) {
-    wd.findElement(By.cssSelector("input[value='"+id+"']")).click();
+    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
 
   }
 
@@ -71,7 +68,6 @@ public class GroupHelper extends BaseHelper {
     submitGroupModification();
     returnToGroupPage();
   }
-
 
 
   public void delete(GroupData group) {

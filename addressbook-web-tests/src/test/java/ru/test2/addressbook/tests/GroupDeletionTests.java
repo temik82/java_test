@@ -1,19 +1,12 @@
 package ru.test2.addressbook.tests;
 
 
-import org.hamcrest.CoreMatchers;
-import org.hamcrest.MatcherAssert;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.test2.addressbook.model.GroupData;
 import ru.test2.addressbook.model.Groups;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
-
-import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.testng.Assert.assertEquals;
 
@@ -36,14 +29,8 @@ public class GroupDeletionTests extends TestBase {
     app.group().delete(deletedGroup);
     Groups after=app.group().all();
     assertEquals(after.size(),before.size()-1);
-
     assertThat(after, equalTo(before.without(deletedGroup)));
 
-
-
   }
-
-
-
 
 }

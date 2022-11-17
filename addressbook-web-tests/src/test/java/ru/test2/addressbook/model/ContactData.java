@@ -3,12 +3,12 @@ package ru.test2.addressbook.model;
 import java.util.Objects;
 
 public class ContactData {
-  private int id=Integer.MAX_VALUE;
+  private int id = Integer.MAX_VALUE;
 
-  private  String firstName;
+  private String firstName;
   private String lastName;
   private String phone;
-  private  String email;
+  private String email;
 
 
   @Override
@@ -28,6 +28,7 @@ public class ContactData {
     this.id = id;
     return this;
   }
+
   public ContactData withFirstName(String firstName) {
     this.firstName = firstName;
     return this;
