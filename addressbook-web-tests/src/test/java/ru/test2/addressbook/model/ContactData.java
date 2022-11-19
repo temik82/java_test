@@ -7,9 +7,38 @@ public class ContactData {
 
   private String firstName;
   private String lastName;
-  private String phone;
+  private String mobilePhone;
+  private String allPhones;
+
+  public String getAllPhones() {
+    return allPhones;
+  }
+
+  public ContactData withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
+  }
+
+
+
+
+
   private String email;
 
+  private String homePhone;
+  private String workPhone;
+
+  public String getHomePhone() {
+    return homePhone;
+  }
+
+  public String getWorkPhone() {
+    return workPhone;
+  }
+
+  public String getMobilePhone() {
+    return mobilePhone;
+  }
 
   @Override
   public String toString() {
@@ -32,15 +61,27 @@ public class ContactData {
   public ContactData withFirstName(String firstName) {
     this.firstName = firstName;
     return this;
+
   }
+
+  public ContactData withHomePhone(String homePhone) {
+    this.homePhone = homePhone;
+    return this;
+  }
+  public ContactData withWorkPhone(String workPhone) {
+    this.workPhone = workPhone;
+    return this;
+  }
+
+
 
   public ContactData withLastName(String lastName) {
     this.lastName = lastName;
     return this;
   }
 
-  public ContactData withPhone(String phone) {
-    this.phone = phone;
+  public ContactData withMobilePhone(String mobilePhone) {
+    this.mobilePhone = mobilePhone;
     return this;
   }
 
@@ -71,7 +112,7 @@ public class ContactData {
   }
 
   public String phone() {
-    return phone;
+    return mobilePhone;
   }
 
   public String email() {
