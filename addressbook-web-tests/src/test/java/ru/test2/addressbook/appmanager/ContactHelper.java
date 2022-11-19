@@ -35,6 +35,8 @@ public class ContactHelper extends BaseHelper {
     type(By.name("email3"), contactData.getEmail3());
     type(By.name("home"), contactData.getHomePhone());
     type(By.name("work"), contactData.getWorkPhone());
+    type(By.name("phone2"), contactData.getPhone2());
+
 
     if (creation) {
       if (isThereAGroupAtList()) {
@@ -75,10 +77,11 @@ public class ContactHelper extends BaseHelper {
     String email2 = wd.findElement(By.name("email2")).getAttribute("value");
     String email3 = wd.findElement(By.name("email3")).getAttribute("value");
     String postAddress = wd.findElement(By.name("address")).getAttribute("value");
+    String phone2 = wd.findElement(By.name("phone2")).getAttribute("value");
     wd.navigate().back();
     return new ContactData().withId(contact.getId()).withFirstName(firstName)
             .withLastName(lastName).withHomePhone(home).withMobilePhone(mobile)
-            .withWorkPhone(work).withEmail(email).withEmail2(email2).withEmail3(email3).withPostAddress(postAddress);
+            .withWorkPhone(work).withPhone2(phone2).withEmail(email).withEmail2(email2).withEmail3(email3).withPostAddress(postAddress);
 
 
   }

@@ -2,6 +2,7 @@ package ru.test2.addressbook.model;
 
 import java.util.Objects;
 
+
 public class ContactData {
   private int id = Integer.MAX_VALUE;
 
@@ -12,6 +13,16 @@ public class ContactData {
   private String postAddress;
   private String allEmails;
   private String email2;
+  private String phone2;
+
+  public String getPhone2() {
+    return phone2;
+  }
+
+  public ContactData withPhone2(String phone2) {
+    this.phone2 = phone2;
+    return this;
+  }
 
   public String getEmail2() {
     return email2;
