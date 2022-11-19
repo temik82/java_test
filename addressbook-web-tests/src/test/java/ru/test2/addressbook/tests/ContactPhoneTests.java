@@ -43,7 +43,7 @@ public class ContactPhoneTests extends TestBase {
 
   private String mergeEmails(ContactData contact) {
     return Arrays.asList(contact.getEmail(), contact.getEmail2(), contact.getEmail3()).stream()
-            .filter((s) -> !s.equals("")).map(ContactPhoneTests::cleanedEmail)
+            .filter((s) -> !s.equals(""))
             .collect(Collectors.joining("\n"));
   }
 
@@ -52,7 +52,5 @@ public class ContactPhoneTests extends TestBase {
     return phone.replaceAll("\\s", "").replaceAll("-()", "");
   }
 
-  public static String cleanedEmail(String email) {
-    return email.replaceAll("\\s", "");
-  }
+
 }
