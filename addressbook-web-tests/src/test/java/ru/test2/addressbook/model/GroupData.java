@@ -26,6 +26,18 @@ public class GroupData {
 
   private String footer;
 
+  public String getName() {
+    return name;
+  }
+
+  public String getHeader() {
+    return header;
+  }
+
+  public String getFooter() {
+    return footer;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
