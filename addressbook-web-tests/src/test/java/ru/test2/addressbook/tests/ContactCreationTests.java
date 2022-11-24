@@ -18,18 +18,17 @@ public class ContactCreationTests extends TestBase {
   public void testContactCreation() throws Exception {
     app.goTo().contactPage();
     Contacts before = app.contact().all();
-    File photo=new File("src/test/resources/test1.png");
+    File photo = new File("src/test/resources/test1.png");
     ContactData contact = new ContactData().withFirstName("Sergey")
-            .withLastName("Sidorov").withPhoto(photo);
+            .withLastName("Sidorov").withEmail("test@test.ru").withMobilePhone("1223456789");
     app.contact().create(contact);
     Contacts after = app.contact().all();
     assertThat(after.size(), equalTo(before.size() + 1));
 
     assertThat(after, equalTo(
-            before.withAdded(contact.withId(after.stream().mapToInt((c)->c.getId()).max().getAsInt()))));
+            before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
 
   }
-
 
 
 }

@@ -1,0 +1,20 @@
+[
+  {
+    "firstName": "Ivanov 0",
+    "lastName": "Ivan 0",
+    "mobilePhone": "1234567890",
+    "email": "test0@test.ru"
+  },
+  {
+    "firstName": "Ivanov 1",
+    "lastName": "Ivan 1",
+    "mobilePhone": "1234567891",
+    "email": "test1@test.ru"
+  },
+  {
+    "firstName": "Ivanov 2",
+    "lastName": "Ivan 2",
+    "mobilePhone": "1234567892",
+    "email": "test2@test.ru"
+  }
+]

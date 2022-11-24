@@ -1,20 +1,32 @@
 package ru.test2.addressbook.model;
 
+import com.google.gson.annotations.Expose;
+
 import java.io.File;
 import java.util.Objects;
 
 
 public class ContactData {
   private int id = Integer.MAX_VALUE;
-
+  @Expose
   private String firstName;
+  @Expose
   private String lastName;
+  @Expose
   private String mobilePhone;
   private String allPhones;
   private String postAddress;
   private String allEmails;
   private String email2;
   private String phone2;
+  @Expose
+
+  private String email;
+
+  private String homePhone;
+  private String workPhone;
+  private File photo;
+  private String email3;
 
   public File getPhoto() {
     return photo;
@@ -25,7 +37,6 @@ public class ContactData {
     return this;
   }
 
-  private File photo;
 
   public String getPhone2() {
     return phone2;
@@ -59,8 +70,6 @@ public class ContactData {
   }
 
 
-  private String email3;
-
   public String getAllPhones() {
     return allPhones;
   }
@@ -70,11 +79,6 @@ public class ContactData {
     return this;
   }
 
-
-  private String email;
-
-  private String homePhone;
-  private String workPhone;
 
   public String getHomePhone() {
     return homePhone;
