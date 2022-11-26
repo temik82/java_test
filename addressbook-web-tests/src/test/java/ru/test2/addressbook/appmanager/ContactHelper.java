@@ -25,18 +25,33 @@ public class ContactHelper extends BaseHelper {
     click(By.xpath("//div[@id='content']/form/input[21]"));
   }
 
-  public void fillContactData(ContactData contactData, boolean creation) {
-    type(By.name("firstname"), contactData.firstName());
-    type(By.name("lastname"), contactData.lastName());
-    type(By.name("mobile"), contactData.getMobilePhone());
-    type(By.name("email"), contactData.email());
-    type(By.name("address"), contactData.postAddress());
-    type(By.name("email2"), contactData.getEmail2());
-    type(By.name("email3"), contactData.getEmail3());
-    type(By.name("home"), contactData.getHomePhone());
-    type(By.name("work"), contactData.getWorkPhone());
-    type(By.name("phone2"), contactData.getPhone2());
-    attach(By.name("photo"),contactData.getPhoto());
+  public void fillContactData(ContactData contact, boolean creation) {
+
+      type(By.name("firstname"), contact.getFirstName());
+
+      type(By.name("lastname"), contact.getLastName());
+
+      type(By.name("mobile"), contact.getMobilePhone());
+
+      type(By.name("email"), contact.getEmail());
+
+      type(By.name("address"), contact.getPostAddress());
+
+      type(By.name("email2"), contact.getEmail2());
+
+      type(By.name("email3"), contact.getEmail3());
+
+      type(By.name("home"), contact.getHomePhone());
+
+      type(By.name("work"), contact.getWorkPhone());
+
+      attach(By.name("photo"),contact.getPhoto());
+
+
+      type(By.name("phone2"), contact.getPhone2());
+
+     // System.out.println("No data for test");
+
 
 
     if (creation) {
@@ -54,7 +69,7 @@ public class ContactHelper extends BaseHelper {
 
   public void initContactCreation() {
     click(By.linkText("add new"));
-    wd.get("http://localhost/addressbook/edit.php");
+    //wd.get("http://localhost/addressbook/edit.php");
   }
 
 
@@ -131,6 +146,9 @@ public class ContactHelper extends BaseHelper {
   public boolean isThereAGroupAtList() {
     return isFirstGroupAtListPresent(By.name("new_group"));
 
+  }
+  public int count() {
+    return wd.findElements(By.name("selected[]")).size();
   }
 
 

@@ -1,0 +1,20 @@
+<list>
+  <contact>
+    <lastName>Ivanov 0</lastName>
+    <firstName>Ivan 0</firstName>
+    <email>test0@test.ru</email>
+    <mobilePhone>1234567890</mobilePhone>
+  </contact>
+  <contact>
+    <lastName>Ivanov 1</lastName>
+    <firstName>Ivan 1</firstName>
+    <email>test1@test.ru</email>
+    <mobilePhone>1234567891</mobilePhone>
+  </contact>
+  <contact>
+    <lastName>Ivanov 2</lastName>
+    <firstName>Ivan 2</firstName>
+    <email>test2@test.ru</email>
+    <mobilePhone>1234567892</mobilePhone>
+  </contact>
+</list>

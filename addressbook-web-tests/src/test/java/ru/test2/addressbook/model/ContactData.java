@@ -1,35 +1,59 @@
 package ru.test2.addressbook.model;
 
 import com.google.gson.annotations.Expose;
+import com.thoughtworks.xstream.annotations.XStreamAlias;
+import com.thoughtworks.xstream.annotations.XStreamOmitField;
 
 import java.io.File;
 import java.util.Objects;
 
-
+@XStreamAlias("contact")
 public class ContactData {
+  @XStreamOmitField
   private int id = Integer.MAX_VALUE;
-  @Expose
-  private String firstName;
+
   @Expose
   private String lastName;
   @Expose
-  private String mobilePhone;
-  private String allPhones;
-  private String postAddress;
-  private String allEmails;
-  private String email2;
-  private String phone2;
+  private String firstName;
   @Expose
-
   private String email;
-
+  @Expose
+  private String mobilePhone;
+  @XStreamOmitField
+  private String allPhones;
+  @XStreamOmitField
+  private String postAddress;
+  @XStreamOmitField
+  private String allEmails;
+  @XStreamOmitField
+  private String email2;
+  @XStreamOmitField
+  private String phone2;
+  @XStreamOmitField
   private String homePhone;
+  @XStreamOmitField
   private String workPhone;
+  @XStreamOmitField
   private File photo;
+  @XStreamOmitField
   private String email3;
 
   public File getPhoto() {
     return photo;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ContactData that = (ContactData) o;
+    return Objects.equals(lastName, that.lastName) && Objects.equals(firstName, that.firstName);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(lastName, firstName);
   }
 
   public ContactData withPhoto(File photo) {
@@ -142,26 +166,19 @@ public class ContactData {
     return this;
   }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    ContactData that = (ContactData) o;
-    return id == that.id && Objects.equals(firstName, that.firstName) && Objects.equals(lastName, that.lastName);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(id, firstName, lastName);
-  }
-
-  public String firstName() {
+  public String getFirstName() {
     return firstName;
   }
 
-  public String lastName() {
+  public String getLastName() {
     return lastName;
   }
+
+  public String getPostAddress() {
+    return postAddress;
+  }
+
 
   public String postAddress() {
     return postAddress;
@@ -181,9 +198,5 @@ public class ContactData {
     return this;
   }
 
-
-  public String email() {
-    return email;
-  }
 
 }
