@@ -7,7 +7,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.test2.addressbook.model.ContactData;
 import ru.test2.addressbook.model.Contacts;
-import ru.test2.addressbook.model.GroupData;
 
 import java.io.BufferedReader;
 
@@ -37,8 +36,8 @@ public class ContactCreationTests extends TestBase {
     XStream xstream = new XStream();
     xstream.processAnnotations(ContactData.class);
     xstream.allowTypes(new Class[]{ContactData.class});
-    List<ContactData> groups = (List<ContactData>) xstream.fromXML(xml);
-    return groups.stream().map((c) -> new Object[]{c}).collect(Collectors.toList()).iterator();
+    List<ContactData> contacts = (List<ContactData>) xstream.fromXML(xml);
+    return contacts.stream().map((c) -> new Object[]{c}).collect(Collectors.toList()).iterator();
 
 
   }

@@ -59,10 +59,10 @@ public class ContactDataGenerator {
   }
 
   private void saveAsXml(List<ContactData> contacts, File file) throws IOException {
-    XStream xStream=new XStream();
+    XStream xStream = new XStream();
     xStream.processAnnotations(ContactData.class);
-    String xml= xStream.toXML(contacts);
-    Writer writer=new FileWriter(file);
+    String xml = xStream.toXML(contacts);
+    Writer writer = new FileWriter(file);
     writer.write(xml);
     writer.close();
   }
