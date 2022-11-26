@@ -34,9 +34,10 @@ public class ContactCreationTests extends TestBase {
 
       line = reader.readLine();
     }
-    XStream xStream = new XStream();
-    xStream.processAnnotations(ContactData.class);
-    List<ContactData> groups = (List<ContactData>) xStream.fromXML(xml);
+    XStream xstream = new XStream();
+    xstream.processAnnotations(ContactData.class);
+    xstream.allowTypes(new Class[]{ContactData.class});
+    List<ContactData> groups = (List<ContactData>) xstream.fromXML(xml);
     return groups.stream().map((c) -> new Object[]{c}).collect(Collectors.toList()).iterator();
 
 
@@ -52,12 +53,12 @@ public class ContactCreationTests extends TestBase {
       line = reader.readLine();
     }
     Gson gson = new Gson();
-    List<ContactData> contacts = gson.fromJson(json, new TypeToken<List<ContactData>>() {}.getType());
-    return contacts.stream().map((с) -> new Object[]{с}).collect(Collectors.toList()).iterator();
+    List<ContactData> contacts = gson.fromJson(json, new TypeToken<List<ContactData>>(){}.getType());
+    return contacts.stream().map((с) -> new Object[] {с}).collect(Collectors.toList()).iterator();
 
   }
 
-  @Test(dataProvider = "validContactsFromXml")
+  @Test(dataProvider = "validContactsFromJson")
   public void testContactCreation(ContactData contact) throws Exception {
     app.goTo().contactPage();
     Contacts before = app.contact().all();

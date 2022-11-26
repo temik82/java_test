@@ -42,8 +42,8 @@ public class ContactDataGenerator {
 
   private void run() throws IOException {
     List<ContactData> contacts = generateContacts(count);
-    if (format.equals("xml")) {
-      saveAsXml(contacts, new File(file));
+    if (format.equals("json")) {
+      saveAsJson(contacts, new File(file));
     } else {
       System.out.println("Unrecognized format" + format);
     }
