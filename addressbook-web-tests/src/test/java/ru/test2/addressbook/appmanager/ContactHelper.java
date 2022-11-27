@@ -18,7 +18,7 @@ public class ContactHelper extends BaseHelper {
 
   public void returnToHomePage() {
     click(By.linkText("home"));
-    //wd.get("http://localhost/addressbook/");
+
   }
 
   public void submit() {
@@ -50,7 +50,7 @@ public class ContactHelper extends BaseHelper {
 
       type(By.name("phone2"), contact.getPhone2());
 
-     // System.out.println("No data for test");
+
 
 
 
