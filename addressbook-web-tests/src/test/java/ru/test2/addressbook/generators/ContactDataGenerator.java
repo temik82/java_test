@@ -1,5 +1,4 @@
 package ru.test2.addressbook.generators;
-
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;
@@ -7,8 +6,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.thoughtworks.xstream.XStream;
 import ru.test2.addressbook.model.ContactData;
-
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -44,6 +41,8 @@ public class ContactDataGenerator {
     List<ContactData> contacts = generateContacts(count);
     if (format.equals("json")) {
       saveAsJson(contacts, new File(file));
+    } else if (format.equals("xml")) {
+      saveAsXml(contacts, new File(file));
     } else {
       System.out.println("Unrecognized format" + format);
     }
@@ -51,7 +50,8 @@ public class ContactDataGenerator {
   }
 
   private void saveAsJson(List<ContactData> contacts, File file) throws IOException {
-    Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
+    Gson gson = new GsonBuilder().setPrettyPrinting()
+            .excludeFieldsWithoutExposeAnnotation().create();
     String json = gson.toJson(contacts);
     Writer writer = new FileWriter(file);
     writer.write(json);
@@ -59,12 +59,13 @@ public class ContactDataGenerator {
   }
 
   private void saveAsXml(List<ContactData> contacts, File file) throws IOException {
+
     XStream xStream = new XStream();
     xStream.processAnnotations(ContactData.class);
     String xml = xStream.toXML(contacts);
-    Writer writer = new FileWriter(file);
-    writer.write(xml);
-    writer.close();
+    try (Writer writer = new FileWriter(file);) {
+      writer.write(xml);
+    }
   }
 
   private List<ContactData> generateContacts(int count) {

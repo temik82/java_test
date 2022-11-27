@@ -18,6 +18,19 @@ public class ContactData {
   private String firstName;
   @Expose
   private String email;
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ContactData that = (ContactData) o;
+    return id == that.id && Objects.equals(lastName, that.lastName) && Objects.equals(firstName, that.firstName);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, lastName, firstName);
+  }
   @Expose
   private String mobilePhone;
   @XStreamOmitField
@@ -32,6 +45,7 @@ public class ContactData {
   private String phone2;
   @XStreamOmitField
   private String homePhone;
+
   @XStreamOmitField
   private String workPhone;
   @XStreamOmitField
@@ -41,19 +55,6 @@ public class ContactData {
 
   public File getPhoto() {
     return photo;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    ContactData that = (ContactData) o;
-    return Objects.equals(lastName, that.lastName) && Objects.equals(firstName, that.firstName);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(lastName, firstName);
   }
 
   public ContactData withPhoto(File photo) {
