@@ -11,6 +11,7 @@ dependencies {
     implementation 'org.webjars.npm:commander:9.4.1'
     implementation 'com.thoughtworks.xstream:xstream:1.4.19'
     implementation 'com.google.code.gson:gson:2.10'
+    implementation 'com.tersesystems.echopraxia:logback:2.2.4'
 }
 
 task testGroups(type: Test ){
