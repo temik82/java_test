@@ -3,21 +3,29 @@ package ru.test2.addressbook.model;
 import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
+import jakarta.persistence.*;
 
 import java.io.File;
 import java.util.Objects;
 
 @XStreamAlias("contact")
+@Entity
+@Table(name="addressbook")
 public class ContactData {
   @XStreamOmitField
+  @Id
+  @Column(name="id")
   private int id = Integer.MAX_VALUE;
 
   @Expose
+  @Column(name="lastname")
   private String lastName;
   @Expose
+  @Column(name="firstname")
   private String firstName;
   @Expose
   private String email;
+  private String group;
 
   @Override
   public boolean equals(Object o) {
@@ -32,33 +40,40 @@ public class ContactData {
     return Objects.hash(id, lastName, firstName);
   }
   @Expose
+  @Column(name="mobile")
   private String mobilePhone;
   @XStreamOmitField
+  @Transient
   private String allPhones;
   @XStreamOmitField
+  @Column(name="address")
   private String postAddress;
   @XStreamOmitField
+  @Transient
   private String allEmails;
   @XStreamOmitField
   private String email2;
   @XStreamOmitField
   private String phone2;
   @XStreamOmitField
+  @Column(name="home")
   private String homePhone;
 
   @XStreamOmitField
+  @Column(name="work")
   private String workPhone;
   @XStreamOmitField
-  private File photo;
+  @Column(name="photo")
+  private String photo;
   @XStreamOmitField
   private String email3;
 
   public File getPhoto() {
-    return photo;
+    return new File(photo);
   }
 
   public ContactData withPhoto(File photo) {
-    this.photo = photo;
+    this.photo = photo.getPath();
     return this;
   }
 
