@@ -49,6 +49,7 @@ public class ContactHelper extends BaseHelper {
 
 
       type(By.name("phone2"), contact.getPhone2());
+      type(By.name("address2"), contact.getAddress2());
 
 
 
@@ -94,10 +95,12 @@ public class ContactHelper extends BaseHelper {
     String email3 = wd.findElement(By.name("email3")).getAttribute("value");
     String postAddress = wd.findElement(By.name("address")).getAttribute("value");
     String phone2 = wd.findElement(By.name("phone2")).getAttribute("value");
+    String address2=wd.findElement(By.name("address2")).getAttribute("value");
     wd.navigate().back();
     return new ContactData().withId(contact.getId()).withFirstName(firstName)
             .withLastName(lastName).withHomePhone(home).withMobilePhone(mobile)
-            .withWorkPhone(work).withPhone2(phone2).withEmail(email).withEmail2(email2).withEmail3(email3).withPostAddress(postAddress);
+            .withWorkPhone(work).withPhone2(phone2).withEmail(email).withEmail2(email2)
+            .withEmail3(email3).withPostAddress(postAddress).withAddress2(address2);
 
 
   }
