@@ -69,6 +69,19 @@ public class ContactData {
   }
 
 
+  public File getPhoto() {
+    if (photo != null) {
+      return new File(photo);
+    } else {
+      return null;
+    }
+  }
+
+  public ContactData withPhoto(File photo) {
+    this.photo = photo.getPath();
+    return this;
+  }
+
   @Override
   public String toString() {
     return "ContactData{" +
@@ -83,6 +96,7 @@ public class ContactData {
             ", homePhone='" + homePhone + '\'' +
             ", workPhone='" + workPhone + '\'' +
             ", email3='" + email3 + '\'' +
+            ", address2='" + address2 + '\'' +
             '}';
   }
 
@@ -91,27 +105,13 @@ public class ContactData {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     ContactData that = (ContactData) o;
-    return id == that.id && Objects.equals(lastName, that.lastName) && Objects.equals(firstName, that.firstName) && Objects.equals(email, that.email) && Objects.equals(mobilePhone, that.mobilePhone) && Objects.equals(postAddress, that.postAddress) && Objects.equals(email2, that.email2) && Objects.equals(phone2, that.phone2) && Objects.equals(homePhone, that.homePhone) && Objects.equals(workPhone, that.workPhone) && Objects.equals(email3, that.email3);
+    return id == that.id && Objects.equals(lastName, that.lastName) && Objects.equals(firstName, that.firstName) && Objects.equals(email, that.email) && Objects.equals(mobilePhone, that.mobilePhone) && Objects.equals(postAddress, that.postAddress) && Objects.equals(email2, that.email2) && Objects.equals(phone2, that.phone2) && Objects.equals(homePhone, that.homePhone) && Objects.equals(workPhone, that.workPhone) && Objects.equals(email3, that.email3) && Objects.equals(address2, that.address2);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, lastName, firstName, email, mobilePhone, postAddress, email2, phone2, homePhone, workPhone, email3);
+    return Objects.hash(id, lastName, firstName, email, mobilePhone, postAddress, email2, phone2, homePhone, workPhone, email3, address2);
   }
-
-  public File getPhoto() {
-    if (photo != null) {
-      return new File(photo);
-    } else {
-      return null;
-    }
-  }
-
-  public ContactData withPhoto(File photo) {
-    this.photo = photo.getPath();
-    return this;
-  }
-
 
   public String getPhone2() {
     return phone2;
