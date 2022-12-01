@@ -10,7 +10,7 @@ import java.util.Objects;
 
 @XStreamAlias("contact")
 @Entity
-@Table(name="addressbook")
+@Table(name = "addressbook")
 public class ContactData {
   @XStreamOmitField
   @Id
@@ -25,7 +25,7 @@ public class ContactData {
   private String firstName;
   @Expose
   private String email;
-  private String group;
+
 
   @Override
   public boolean equals(Object o) {
