@@ -33,29 +33,36 @@ public class ContactData {
   private String allPhones;
   @XStreamOmitField
   @Column(name = "address")
+  @Expose
   private String postAddress;
   @XStreamOmitField
   @Transient
   private String allEmails;
   @XStreamOmitField
+  @Expose
   @Column(name = "email2")
   private String email2;
   @XStreamOmitField
+  @Expose
   @Column(name = "phone2")
   private String phone2;
   @XStreamOmitField
+  @Expose
   @Column(name = "home")
   private String homePhone;
 
   @XStreamOmitField
+  @Expose
   @Column(name = "work")
   private String workPhone;
   @XStreamOmitField
   @Column(name = "photo")
   private String photo;
   @XStreamOmitField
+  @Expose
   @Column(name = "email3")
   private String email3;
+  @Expose
   @Column(name = "address2")
   private String address2;
 

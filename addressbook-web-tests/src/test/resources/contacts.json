@@ -3,18 +3,39 @@
     "lastName": "Ivanov 0",
     "firstName": "Ivan 0",
     "email": "test0@test.ru",
-    "mobilePhone": "1234567890"
+    "mobilePhone": "1234567890",
+    "postAddress": "464783",
+    "email2": "test10@test.ru",
+    "phone2": "3547389330",
+    "homePhone": "135637289",
+    "workPhone": "348487499",
+    "email3": "test11@test.ru",
+    "address2": "3630330"
   },
   {
     "lastName": "Ivanov 1",
     "firstName": "Ivan 1",
     "email": "test1@test.ru",
-    "mobilePhone": "1234567891"
+    "mobilePhone": "1234567891",
+    "postAddress": "464783",
+    "email2": "test10@test.ru",
+    "phone2": "3547389330",
+    "homePhone": "135637289",
+    "workPhone": "348487499",
+    "email3": "test11@test.ru",
+    "address2": "3630330"
   },
   {
     "lastName": "Ivanov 2",
     "firstName": "Ivan 2",
     "email": "test2@test.ru",
-    "mobilePhone": "1234567892"
+    "mobilePhone": "1234567892",
+    "postAddress": "464783",
+    "email2": "test10@test.ru",
+    "phone2": "3547389330",
+    "homePhone": "135637289",
+    "workPhone": "348487499",
+    "email3": "test11@test.ru",
+    "address2": "3630330"
   }
 ]
