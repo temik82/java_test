@@ -138,7 +138,12 @@ public class ContactHelper extends BaseHelper {
     selectContactById(contact.getId());
     deleteSelectedContact();
     switchAlertYes();
+    waitConfirm();
     returnToHomePage();
+  }
+
+  private void waitConfirm() {
+    wd.findElement(By.cssSelector("div.msgbox"));
   }
 
   public boolean isThereAContact() {
