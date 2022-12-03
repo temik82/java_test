@@ -6,7 +6,9 @@ import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import jakarta.persistence.*;
 
 import java.io.File;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @XStreamAlias("contact")
 @Entity
@@ -65,6 +67,14 @@ public class ContactData {
   @Expose
   @Column(name = "address2")
   private String address2;
+  @ManyToMany(fetch = FetchType.EAGER)
+  @JoinTable(name="address_in_groups"
+          ,joinColumns = @JoinColumn(name = "id"),inverseJoinColumns =@JoinColumn(name = "group_id") )
+  private Set<GroupData> groups=new HashSet<GroupData>();
+
+  public Groups getGroups() {
+    return new Groups(groups);
+  }
 
   public String getAddress2() {
     return address2;
