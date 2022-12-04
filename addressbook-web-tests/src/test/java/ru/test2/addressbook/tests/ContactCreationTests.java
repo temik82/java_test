@@ -8,6 +8,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.test2.addressbook.model.ContactData;
 import ru.test2.addressbook.model.Contacts;
+import ru.test2.addressbook.model.Groups;
 
 import java.io.*;
 
@@ -59,7 +60,7 @@ public class ContactCreationTests extends TestBase {
 
   }
 
-  @Test(dataProvider = "validContactsFromJson")
+  @Test(dataProvider = "validContactsFromJson",enabled = false)
   public void testContactCreation(ContactData contact) throws Exception {
     Contacts before = app.db().contacts();
     app.goTo().contactPage();
@@ -72,16 +73,21 @@ public class ContactCreationTests extends TestBase {
 
   }
 
-  @Test(enabled = false)
+  @Test
   public void testContactCreation() throws Exception {
+    Groups groups=app.db().groups();
+    Contacts before = app.db().contacts();
     app.goTo().contactPage();
-    Contacts before = app.contact().all();
     File photo = new File("src/test/resources/test1.png");
-    ContactData contact = new ContactData().withFirstName("Sergey").withLastName("Sidorov").withEmail("test@test.ru")
-            .withMobilePhone("1223456789").withPhoto(photo);
+    ContactData contact = new ContactData().withFirstName("Ivan")
+            .withLastName("Ivanov").withMobilePhone("89777777771")
+            .withEmail("test1@test.ru").withEmail2("test2@test.ru")
+            .withPostAddress("546783").withPhone2("85536788990").withWorkPhone("2000000000")
+            .withEmail3("test4@test.ru").withHomePhone("3000000000").withAddress2("122234").inGroup(groups.iterator().next());
     app.contact().create(contact);
-    Contacts after = app.contact().all();
-    assertThat(after.size(), equalTo(before.size() + 1));
+    assertThat(app.contact().count(), equalTo(before.size() + 1));
+    Contacts after = app.db().contacts();
+
 
     assertThat(after, equalTo(
             before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));

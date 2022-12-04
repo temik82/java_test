@@ -56,8 +56,9 @@ public class ContactHelper extends BaseHelper {
 
 
     if (creation) {
-      if (isThereAGroupAtList()) {
-        new Select(wd.findElement(By.name("new_group"))).selectByIndex(1);
+      if (contact.getGroups().size()>0) {
+        Assert.assertTrue(contact.getGroups().size()==1);
+        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contact.getGroups().iterator().next().getName());
       } else {
         new Select(wd.findElement(By.name("new_group"))).selectByIndex(0);
       }
