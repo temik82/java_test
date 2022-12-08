@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.test2.addressbook.model.ContactData;
 import ru.test2.addressbook.model.Contacts;
+import ru.test2.addressbook.model.GroupData;
 
 import java.util.List;
 
@@ -78,6 +79,11 @@ public class ContactHelper extends BaseHelper {
   public void selectContactById(int id) {
     wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
   }
+//  public void selectGroupId(String name) {
+//    new Select(wd.findElement(By.name("to_group"))).selectByVisibleText();
+////    WebElement w1=wd.findElement(By.cssSelector("option[value='" + id + "']"));
+////    w1.click();
+//  }
 
 
   public void initContactModificationById(int id) {
@@ -143,6 +149,7 @@ public class ContactHelper extends BaseHelper {
     returnToHomePage();
   }
 
+
   private void waitConfirm() {
     wd.findElement(By.cssSelector("div.msgbox"));
   }
@@ -179,5 +186,19 @@ public class ContactHelper extends BaseHelper {
   }
 
 
+  public void addToGroup(ContactData contact, GroupData group) {
+    selectContactById(contact.getId());
+    new Select(wd.findElement(By.name("to_group"))).selectByValue(String.valueOf(group.getId()));
+  //  selectGroupId(group.getName());
+    //  .selectByVisibleText(Integer.toString(idGroup));
+     //wd.findElements(By.name("to_group"));f
+    clickToAdd();
+
+
+  }
+
+  private void clickToAdd() {
+    wd.findElement(By.name("add")).click();
+  }
 }
 

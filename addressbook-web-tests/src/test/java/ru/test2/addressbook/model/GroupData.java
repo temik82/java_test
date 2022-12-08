@@ -30,12 +30,14 @@ private int id = Integer.MAX_VALUE;
   @Column(name="group_footer")
   private String footer;
 
+
+
+  @ManyToMany(mappedBy = "groups",fetch = FetchType.EAGER)
+  private Set<ContactData> contacts=new HashSet<ContactData>();
+
   public Set<ContactData> getContacts() {
     return new Contacts(contacts);
   }
-
-  @ManyToMany(mappedBy = "groups")
-  private Set<ContactData> contacts=new HashSet<ContactData>();
 
   public GroupData withName(String name) {
     this.name = name;
