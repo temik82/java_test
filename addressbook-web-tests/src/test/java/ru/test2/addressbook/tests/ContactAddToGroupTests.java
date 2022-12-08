@@ -47,7 +47,7 @@ public class ContactAddToGroupTests extends TestBase {
       }
       if (before.size() > 0) {
         Groups beforeGroupsInContact = contact.getGroups();
-        app.goTo().contactPage();
+       // app.goTo().contactPage();
         app.contact().addToGroup(contact, before.get(0));
 
         System.out.println("id contact " + contact.getId());
