@@ -11,7 +11,7 @@ import ru.test2.addressbook.model.Groups;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DeleteContactFromGroup extends TestBase {
+public class DeleteContactFromGroupTest extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions() {
