@@ -8,9 +8,11 @@ import ru.test2.addressbook.model.Contacts;
 import ru.test2.addressbook.model.GroupData;
 import ru.test2.addressbook.model.Groups;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ContactAddToGroupTests extends TestBase {
+public class DeleteContactFromGroup extends TestBase {
+
   @BeforeMethod
   public void ensurePreconditions() {
     if (app.db().contacts().size() == 0) {
@@ -29,57 +31,45 @@ public class ContactAddToGroupTests extends TestBase {
   }
 
   @Test
-  public void testContactAddToGroup() {
+  public void testDeleteContactFromGroup() {
+
     Groups groups = app.db().groups();
     Contacts contacts = app.db().contacts();
     List<ContactData> contactList = new ArrayList<>();
     contactList.addAll(contacts);
     for (int i = 0; i < contactList.size(); i++) {
-
       ContactData contact = contactList.get(i);
 
       List<GroupData> before = new ArrayList<>();
-
       for (GroupData group : groups) {
-        if (!group.getContacts().contains(contact)) {
+        if (group.getContacts().contains(contact)) {
           before.add(group);
         }
-      }
-      if (before.size() > 0) {
-        Groups beforeGroupsInContact = contact.getGroups();
-        app.goTo().contactPage();
-        app.contact().addToGroup(contact, before.get(0));
 
-        System.out.println("id contact =" + contact.getId());
-        System.out.println("id group =" + before.get(0).getId());
-        i = contactList.size();
-        int id = contact.getId();
-        Contacts contactsAfter = app.db().contacts();
-        for (ContactData contactAfter : contactsAfter) {
+        if (before.size() > 0) {
+          Groups beforeGroupsInContact = contact.getGroups();
+          app.goTo().contactPage();
+          app.contact().deleteContactFromGroup(contact, before.get(0));
 
-          if (contactAfter.getId() == id) {
-            Groups afterGroupsInContact = contactAfter.getGroups();
-            Assert.assertEquals(afterGroupsInContact.size(), beforeGroupsInContact.size() + 1);
-            System.out.println("count after= " + afterGroupsInContact.size());
-            System.out.println("count before+1= " + (beforeGroupsInContact.size() + 1));
+          System.out.println("id contact= " + contact.getId());
+          System.out.println("id group= " + before.get(0).getId());
+          i = contactList.size();
+          int id = contact.getId();
+          Contacts contactsAfter = app.db().contacts();
+          for (ContactData contactAfter : contactsAfter) {
+
+            if (contactAfter.getId() == id) {
+              Groups afterGroupsInContact = contactAfter.getGroups();
+              Assert.assertEquals(afterGroupsInContact.size(), beforeGroupsInContact.size() - 1);
+              System.out.println("count after= " + afterGroupsInContact.size());
+              System.out.println("count before -1= " + (beforeGroupsInContact.size() - 1));
+            }
           }
 
         }
 
       }
-
-
     }
+
   }
-
 }
-
-
-
-
-
-
-
-
-
-

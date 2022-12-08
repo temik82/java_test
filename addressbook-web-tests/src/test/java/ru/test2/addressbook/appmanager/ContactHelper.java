@@ -28,37 +28,34 @@ public class ContactHelper extends BaseHelper {
 
   public void fillContactData(ContactData contact, boolean creation) {
 
-      type(By.name("firstname"), contact.getFirstName());
+    type(By.name("firstname"), contact.getFirstName());
 
-      type(By.name("lastname"), contact.getLastName());
+    type(By.name("lastname"), contact.getLastName());
 
-      type(By.name("mobile"), contact.getMobilePhone());
+    type(By.name("mobile"), contact.getMobilePhone());
 
-      type(By.name("email"), contact.getEmail());
+    type(By.name("email"), contact.getEmail());
 
-      type(By.name("address"), contact.getPostAddress());
+    type(By.name("address"), contact.getPostAddress());
 
-      type(By.name("email2"), contact.getEmail2());
+    type(By.name("email2"), contact.getEmail2());
 
-      type(By.name("email3"), contact.getEmail3());
+    type(By.name("email3"), contact.getEmail3());
 
-      type(By.name("home"), contact.getHomePhone());
+    type(By.name("home"), contact.getHomePhone());
 
-      type(By.name("work"), contact.getWorkPhone());
+    type(By.name("work"), contact.getWorkPhone());
 
-      attach(By.name("photo"),contact.getPhoto());
-
-
-      type(By.name("phone2"), contact.getPhone2());
-      type(By.name("address2"), contact.getAddress2());
+    attach(By.name("photo"), contact.getPhoto());
 
 
-
+    type(By.name("phone2"), contact.getPhone2());
+    type(By.name("address2"), contact.getAddress2());
 
 
     if (creation) {
-      if (contact.getGroups().size()>0) {
-        Assert.assertTrue(contact.getGroups().size()==1);
+      if (contact.getGroups().size() > 0) {
+        Assert.assertTrue(contact.getGroups().size() == 1);
         new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contact.getGroups().iterator().next().getName());
       } else {
         new Select(wd.findElement(By.name("new_group"))).selectByIndex(0);
@@ -102,7 +99,7 @@ public class ContactHelper extends BaseHelper {
     String email3 = wd.findElement(By.name("email3")).getAttribute("value");
     String postAddress = wd.findElement(By.name("address")).getAttribute("value");
     String phone2 = wd.findElement(By.name("phone2")).getAttribute("value");
-    String address2=wd.findElement(By.name("address2")).getAttribute("value");
+    String address2 = wd.findElement(By.name("address2")).getAttribute("value");
     wd.navigate().back();
     return new ContactData().withId(contact.getId()).withFirstName(firstName)
             .withLastName(lastName).withHomePhone(home).withMobilePhone(mobile)
@@ -163,6 +160,7 @@ public class ContactHelper extends BaseHelper {
     return isFirstGroupAtListPresent(By.name("new_group"));
 
   }
+
   public int count() {
     return wd.findElements(By.name("selected[]")).size();
   }
@@ -189,9 +187,6 @@ public class ContactHelper extends BaseHelper {
   public void addToGroup(ContactData contact, GroupData group) {
     selectContactById(contact.getId());
     new Select(wd.findElement(By.name("to_group"))).selectByValue(String.valueOf(group.getId()));
-  //  selectGroupId(group.getName());
-    //  .selectByVisibleText(Integer.toString(idGroup));
-     //wd.findElements(By.name("to_group"));f
     clickToAdd();
 
 
@@ -199,6 +194,19 @@ public class ContactHelper extends BaseHelper {
 
   private void clickToAdd() {
     wd.findElement(By.name("add")).click();
+  }
+
+  public void deleteContactFromGroup(ContactData contact, GroupData group) {
+
+    new Select(wd.findElement(By.name("group"))).selectByValue(String.valueOf(group.getId()));
+    selectContactById(contact.getId());
+    clickToRemove();
+
+  }
+
+  private void clickToRemove() {
+    wd.findElement(By.name("remove")).click();
+
   }
 }
 
