@@ -10,6 +10,8 @@ import ru.test2.addressbook.model.Groups;
 
 import java.util.*;
 
+import static org.testng.Assert.*;
+
 public class ContactAddToGroupTests extends TestBase {
   @BeforeMethod
   public void ensurePreconditions() {
@@ -32,48 +34,20 @@ public class ContactAddToGroupTests extends TestBase {
   public void testContactAddToGroup() {
     Groups groups = app.db().groups();
     Contacts contacts = app.db().contacts();
-    List<ContactData> contactList = new ArrayList<>();
-    contactList.addAll(contacts);
-    for (int i = 0; i < contactList.size(); i++) {
-
-      ContactData contact = contactList.get(i);
-
-      List<GroupData> before = new ArrayList<>();
-
-      for (GroupData group : groups) {
-        if (!group.getContacts().contains(contact)) {
-          before.add(group);
-        }
-      }
-      if (before.size() > 0) {
-        Groups beforeGroupsInContact = contact.getGroups();
-        app.goTo().contactPage();
-        app.contact().addToGroup(contact, before.get(0));
-
-        System.out.println("id contact =" + contact.getId());
-        System.out.println("id group =" + before.get(0).getId());
-        i = contactList.size();
-        int id = contact.getId();
-        Contacts contactsAfter = app.db().contacts();
-        for (ContactData contactAfter : contactsAfter) {
-
-          if (contactAfter.getId() == id) {
-            Groups afterGroupsInContact = contactAfter.getGroups();
-            Assert.assertEquals(afterGroupsInContact.size(), beforeGroupsInContact.size() + 1);
-            System.out.println("count after= " + afterGroupsInContact.size());
-            System.out.println("count before+1= " + (beforeGroupsInContact.size() + 1));
-          }
-
-        }
-
-      }
-
-
-    }
+    app.contact().findContact(contacts, groups, true);
+    ContactData selectedContact = app.contact().findContact(contacts, groups, true);
+    GroupData selectedGroup = app.contact().getGroupData(groups, selectedContact, true);
+    assertTrue(app.contact().getaVoid(selectedContact), "нет контактов без групп ");
+    assertTrue(app.contact().getaVoid(selectedGroup), " нет групп без контактов");
+    Groups beforeGroupsInContact = selectedContact.getGroups();
+    // app.goTo().contactPage();
+    app.contact().addToGroup(selectedContact, selectedGroup);
+    int contactId = selectedContact.getId();
+    Contacts contactsAfter = app.db().contacts();
+    Groups afterGroupsInContact = app.contact().getDataContactAfter(contactsAfter, contactId).getGroups();
+    assertEquals(afterGroupsInContact.size(), (beforeGroupsInContact.size() + 1));
   }
-
 }
-
 
 
 

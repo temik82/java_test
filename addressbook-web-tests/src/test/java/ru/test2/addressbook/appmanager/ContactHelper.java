@@ -1,5 +1,6 @@
 package ru.test2.addressbook.appmanager;
 
+import org.jetbrains.annotations.Nullable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,7 +9,9 @@ import org.testng.Assert;
 import ru.test2.addressbook.model.ContactData;
 import ru.test2.addressbook.model.Contacts;
 import ru.test2.addressbook.model.GroupData;
+import ru.test2.addressbook.model.Groups;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ContactHelper extends BaseHelper {
@@ -76,11 +79,7 @@ public class ContactHelper extends BaseHelper {
   public void selectContactById(int id) {
     wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
   }
-//  public void selectGroupId(String name) {
-//    new Select(wd.findElement(By.name("to_group"))).selectByVisibleText();
-////    WebElement w1=wd.findElement(By.cssSelector("option[value='" + id + "']"));
-////    w1.click();
-//  }
+
 
 
   public void initContactModificationById(int id) {
@@ -188,6 +187,7 @@ public class ContactHelper extends BaseHelper {
     selectContactById(contact.getId());
     new Select(wd.findElement(By.name("to_group"))).selectByValue(String.valueOf(group.getId()));
     clickToAdd();
+    waitConfirm();
 
 
   }
@@ -197,10 +197,10 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void deleteContactFromGroup(ContactData contact, GroupData group) {
-
     new Select(wd.findElement(By.name("group"))).selectByValue(String.valueOf(group.getId()));
     selectContactById(contact.getId());
     clickToRemove();
+    waitConfirm();
 
   }
 
@@ -208,5 +208,86 @@ public class ContactHelper extends BaseHelper {
     wd.findElement(By.name("remove")).click();
 
   }
+
+ // @Nullable
+  public GroupData getGroupData(Groups groups, ContactData selectedContact,boolean add) {
+      GroupData selectedGroup=null;
+
+    if (selectedContact != null && !add) {
+      selectedGroup = findGroup(selectedContact, groups,false);
+
+    } else if (selectedContact != null) {
+      selectedGroup = findGroup(selectedContact, groups,true);
+    }
+    return selectedGroup;
+  }
+
+  @Nullable
+  public boolean getaVoid (ContactData selectedContact){
+    if (selectedContact != null) {
+      return true;
+    }
+    return false;
+  }
+  @Nullable
+  public boolean getaVoid (GroupData selectedGroup){
+    if (selectedGroup != null) {
+      return true;
+    }
+
+    return false;
+  }
+
+  public ContactData findContact(Contacts contacts, Groups groups,boolean add) {
+    List<ContactData> contact = new ArrayList<>();
+    contact.addAll(contacts);
+    for (int i = 0; i < contact.size(); i++) {
+      ContactData selectedContact = contact.get(i);
+      List<GroupData> before = new ArrayList<>();
+      for (GroupData group : groups) {
+        if (add) {
+          if (!group.getContacts().contains(selectedContact)) {
+            before.add(group);
+          }
+        } if (group.getContacts().contains(selectedContact)) {
+          before.add(group);
+        }
+        if (before.size() > 0) {
+
+          return selectedContact;
+
+        }
+
+      }
+
+    }return null;
+  }
+
+  private GroupData findGroup(ContactData selectedContact, Groups groups,boolean add){
+    for (GroupData group : groups) {
+     if (add){
+      if (!group.getContacts().contains(selectedContact)) {
+        return group;
+      }
+      } else if(group.getContacts().contains(selectedContact)) {
+       return group;
+     }
+    }
+    return null;
+  }
+
+
+  public ContactData getDataContactAfter(Contacts contactsAfter, int contactId) {
+    for (ContactData contactData : contactsAfter) {
+      if (contactData.getId() == contactId) {
+
+        return contactData;
+
+      }
+
+    }return null;
+
+  }
+
 }
 
