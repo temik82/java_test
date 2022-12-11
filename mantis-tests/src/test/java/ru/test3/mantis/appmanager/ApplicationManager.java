@@ -18,9 +18,11 @@ public class ApplicationManager {
 
   private final Properties properties;
 
-  WebDriver wd;
+  private WebDriver wd;
 
   private String browser;
+  private RegistrationHelper registrationHelper;
+  private FtpHelper ftp;
 
 
   public ApplicationManager(String browser) {
@@ -38,22 +40,14 @@ public class ApplicationManager {
 
 
 
-    if (browser.equals(BrowserType.CHROME)) {
-      wd = new ChromeDriver();
-    } else if (browser.equals(BrowserType.FIREFOX)) {
-      wd = new FirefoxDriver();
-    }
-
-
-    wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-    wd.get(properties.getProperty("web.baseUrl"));
-
-
   }
 
 
   public void stop() {
-    wd.quit();
+    if(wd!=null){
+      wd.quit();
+    }
+
   }
 
   private boolean isElementPresent(By by) {
@@ -65,6 +59,39 @@ public class ApplicationManager {
     }
   }
 
+public HttpSession newSession(){
+    return new HttpSession(this);
+}
+
+  public RegistrationHelper registration() {
+    if(registrationHelper==null){
+   registrationHelper= new RegistrationHelper(this);
+    } return registrationHelper;
+  }
 
 
+  public WebDriver getDriver() {
+    if(wd==null){
+
+      if (browser.equals(BrowserType.CHROME)) {
+        wd = new ChromeDriver();
+      } else if (browser.equals(BrowserType.FIREFOX)) {
+        wd = new FirefoxDriver();
+      }
+
+
+      wd.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+      wd.get(properties.getProperty("web.baseUrl"));
+    }
+    return wd;
+  }
+
+  public String getProperty(String key) {
+    return properties.getProperty(key);
+  }
+  public FtpHelper ftp(){
+    if(ftp==null){
+    ftp=new FtpHelper(this);
+    } return ftp;
+  }
 }

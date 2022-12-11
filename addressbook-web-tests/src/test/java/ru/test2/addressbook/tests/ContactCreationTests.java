@@ -60,7 +60,7 @@ public class ContactCreationTests extends TestBase {
 
   }
 
-  @Test(dataProvider = "validContactsFromJson",enabled = false)
+  @Test(dataProvider = "validContactsFromJson")
   public void testContactCreation(ContactData contact) throws Exception {
     Contacts before = app.db().contacts();
     app.goTo().contactPage();
@@ -73,7 +73,7 @@ public class ContactCreationTests extends TestBase {
 
   }
 
-  @Test
+  @Test(enabled = false)
   public void testContactCreation() throws Exception {
     Groups groups=app.db().groups();
     Contacts before = app.db().contacts();
