@@ -23,6 +23,7 @@ public class ApplicationManager {
   private String browser;
   private RegistrationHelper registrationHelper;
   private FtpHelper ftp;
+  private MailHelper mailHelper;
 
 
   public ApplicationManager(String browser) {
@@ -39,12 +40,11 @@ public class ApplicationManager {
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
 
 
-
   }
 
 
   public void stop() {
-    if(wd!=null){
+    if (wd != null) {
       wd.quit();
     }
 
@@ -59,19 +59,20 @@ public class ApplicationManager {
     }
   }
 
-public HttpSession newSession(){
+  public HttpSession newSession() {
     return new HttpSession(this);
-}
+  }
 
   public RegistrationHelper registration() {
-    if(registrationHelper==null){
-   registrationHelper= new RegistrationHelper(this);
-    } return registrationHelper;
+    if (registrationHelper == null) {
+      registrationHelper = new RegistrationHelper(this);
+    }
+    return registrationHelper;
   }
 
 
   public WebDriver getDriver() {
-    if(wd==null){
+    if (wd == null) {
 
       if (browser.equals(BrowserType.CHROME)) {
         wd = new ChromeDriver();
@@ -89,9 +90,19 @@ public HttpSession newSession(){
   public String getProperty(String key) {
     return properties.getProperty(key);
   }
-  public FtpHelper ftp(){
-    if(ftp==null){
-    ftp=new FtpHelper(this);
-    } return ftp;
+
+  public FtpHelper ftp() {
+    if (ftp == null) {
+      ftp = new FtpHelper(this);
+    }
+    return ftp;
+  }
+
+  public MailHelper mail() {
+    if (mailHelper == null) {
+      mailHelper = new MailHelper(this);
+
+    }
+    return mailHelper;
   }
 }
