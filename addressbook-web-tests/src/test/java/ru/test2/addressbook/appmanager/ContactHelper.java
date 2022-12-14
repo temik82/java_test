@@ -220,6 +220,8 @@ public class ContactHelper extends BaseHelper {
       selectedGroup = findGroup(selectedContact, groups,true);
     }
     return selectedGroup;
+
+
   }
 
   @Nullable

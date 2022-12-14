@@ -15,6 +15,7 @@ import static org.testng.Assert.*;
 public class ContactAddToGroupTests extends TestBase {
   @BeforeMethod
   public void ensurePreconditions() {
+
     if (app.db().contacts().size() == 0) {
       app.goTo().contactPage();
       app.contact().create(new ContactData().withFirstName("Petr")
