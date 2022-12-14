@@ -41,7 +41,7 @@ public class DeleteContactFromGroupTest extends TestBase {
    assertTrue(app.contact().getaVoid(selectedContact), "нет контактов c группами ");
    assertTrue(app.contact().getaVoid(selectedGroup), " нет групп без контактов");
     Groups beforeGroupsInContact = selectedContact.getGroups();
-    // app.goTo().contactPage();
+    app.goTo().contactPage();
     System.out.println(selectedContact);
     System.out.println(selectedGroup);
     app.contact().deleteContactFromGroup(selectedContact, selectedGroup);

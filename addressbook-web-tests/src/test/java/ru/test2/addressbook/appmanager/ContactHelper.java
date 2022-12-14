@@ -202,6 +202,7 @@ public class ContactHelper extends BaseHelper {
     clickToRemove();
     waitConfirm();
 
+
   }
 
   private void clickToRemove() {
@@ -218,11 +219,12 @@ public class ContactHelper extends BaseHelper {
 
     } else if (selectedContact != null) {
       selectedGroup = findGroup(selectedContact, groups,true);
+
     }
-    return selectedGroup;
+      return selectedGroup;
+    }
 
 
-  }
 
   @Nullable
   public boolean getaVoid (ContactData selectedContact){
@@ -268,7 +270,7 @@ public class ContactHelper extends BaseHelper {
   private GroupData findGroup(ContactData selectedContact, Groups groups,boolean add){
     for (GroupData group : groups) {
      if (add){
-      if (!group.getContacts().contains(selectedContact)) {
+      if (!group.getContacts().contains(selectedContact) ) {
         return group;
       }
       } else if(group.getContacts().contains(selectedContact)) {

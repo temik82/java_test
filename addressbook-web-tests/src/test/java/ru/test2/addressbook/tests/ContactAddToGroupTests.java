@@ -13,6 +13,7 @@ import java.util.*;
 import static org.testng.Assert.*;
 
 public class ContactAddToGroupTests extends TestBase {
+
   @BeforeMethod
   public void ensurePreconditions() {
 
@@ -29,6 +30,9 @@ public class ContactAddToGroupTests extends TestBase {
       app.group().create(new GroupData().withName("test1"));
     }
 
+
+
+
   }
 
   @Test
@@ -38,10 +42,14 @@ public class ContactAddToGroupTests extends TestBase {
     app.contact().findContact(contacts, groups, true);
     ContactData selectedContact = app.contact().findContact(contacts, groups, true);
     GroupData selectedGroup = app.contact().getGroupData(groups, selectedContact, true);
-    assertTrue(app.contact().getaVoid(selectedContact), "нет контактов без групп ");
-    assertTrue(app.contact().getaVoid(selectedGroup), " нет групп без контактов");
+    if (selectedGroup==null){
+      app.goTo().groupPage();
+      app.group().create(new GroupData().withName("test1"));
+      Groups newGroups = app.db().groups();
+      selectedGroup=app.contact().getGroupData(newGroups,selectedContact,true);
+    }
     Groups beforeGroupsInContact = selectedContact.getGroups();
-    // app.goTo().contactPage();
+    app.goTo().contactPage();
     app.contact().addToGroup(selectedContact, selectedGroup);
     int contactId = selectedContact.getId();
     Contacts contactsAfter = app.db().contacts();
