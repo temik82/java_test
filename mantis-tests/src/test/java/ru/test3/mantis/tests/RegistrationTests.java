@@ -20,7 +20,7 @@ public class RegistrationTests extends TestBase {
 
   @Test
   public void testRegistration() throws MessagingException, IOException {
-//    app.ftp().upload(new File("src/test/resources/2.txt"),"1.txt","1.bak");
+
 
     long now = System.currentTimeMillis();
      String user = String.format("user%s", now);
