@@ -18,7 +18,7 @@ public class RestAssuredTests {
 
   @BeforeClass
   public void init(){
-    RestAssured.authentication=RestAssured.basic("f2c01c8399d967884390d1e87b46b533","");
+    RestAssured.authentication=RestAssured.basic("02276e82280489b4fa0cd56b59abad4c","");
   }
   @Test
   public void testCreateIssue() throws IOException {
