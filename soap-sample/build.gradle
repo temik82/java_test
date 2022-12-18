@@ -1,5 +1,19 @@
-apply plugin: 'java'
+buildscript{
+    repositories{
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath 'com.yupzip:wsdl2java:2.3.2'
+    }
+}
 
+apply plugin: 'java'
+apply plugin: 'com.yupzip.wsdl2java'
+
+wsdl2java {
+    wsdlDir = file("src/main/resources")
+    wsdlsToGenerate = [['src/main/resources/ipservice.wsdl']]
+}
 
 repositories {
     mavenCentral()
