@@ -45,8 +45,6 @@ public class ApplicationManager {
     dbHelper = new DbHelper();
     if ("".equals(properties.getProperty("selenium.server"))) {
 
-
-
     if (browser.equals(BrowserType.CHROME)) {
       wd = new ChromeDriver();
     } else if (browser.equals(BrowserType.FIREFOX)) {
