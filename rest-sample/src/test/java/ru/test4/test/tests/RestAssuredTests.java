@@ -1,4 +1,4 @@
-package ru.test4.test;
+package ru.test4.test.tests;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
@@ -8,6 +8,7 @@ import com.jayway.restassured.RestAssured;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import ru.test4.test.model.Issue;
 
 import java.io.IOException;
 import java.util.Set;

@@ -1,4 +1,4 @@
-package ru.test4.test;
+package ru.test4.test.model;
 
 import java.util.Objects;
 
