@@ -1,36 +1,39 @@
 package ru.test4.test.tests;
 
 import org.testng.SkipException;
-import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeSuite;
+import ru.test4.test.appmanager.ApplicationManager;
+import ru.test4.test.model.Issue;
 
-import java.net.MalformedURLException;
-import java.rmi.RemoteException;
+import java.io.IOException;
+import java.util.Set;
 
 
 public class TestBase {
 
 
+  protected static final ApplicationManager app = new ApplicationManager();
+
+  @BeforeSuite
+  public void setUp() throws Exception {
+    app.init();
+  }
 
 
+  public boolean isIssueOpen(int issueId) throws IOException {
+    Set<Issue> issues = app.rest().getIssuesFromJson(issueId);
+    Issue issue = issues.iterator().next();
+    System.out.println(issue.getState_name());
+    String status = issue.getState_name();
+    return !status.equals("Resolved");
 
-  public boolean isIssueOpen(int issueId) throws MalformedURLException, RemoteException {
-//    MantisConnectPortType mc = app.soap().getMantisConnect();
-//    IssueData selectedIssueData = mc.mc_issue_get(app.getProperty("web.adminLogin"), app.getProperty("web.adminPassword"), BigInteger.valueOf(issueId));
-//    System.out.println(selectedIssueData.getStatus().getName());
-//    String status = selectedIssueData.getStatus().getName();
-//    return !status.equals("resolved");
-return false;
 
   }
 
-  public void skipIfNotFixed(int issueId) throws MalformedURLException, RemoteException {
+  public void skipIfNotFixed(int issueId) throws IOException {
     if (isIssueOpen(issueId)) {
       throw new SkipException("Ignored because of issue " + issueId);
     }
-  }
-
-  @AfterSuite(alwaysRun = true)
-  public void tearDown() throws Exception {
 
   }
 

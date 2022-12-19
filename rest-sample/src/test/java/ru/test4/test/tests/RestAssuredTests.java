@@ -4,8 +4,8 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
-import com.jayway.restassured.RestAssured;
 
+import io.restassured.RestAssured;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import ru.test4.test.model.Issue;
@@ -45,8 +45,8 @@ public class RestAssuredTests {
   private int createIssue(Issue newIssue) throws IOException {
 
     String json= RestAssured.given()
-            .parameter("subject", newIssue.getSubject())
-            .parameter("description",newIssue.getDescription())
+            .param("subject", newIssue.getSubject())
+            .param("description",newIssue.getDescription())
             .post("https://bugify.stqa.ru/api/issues.json").asString();
     JsonElement parsed = new JsonParser().parse(json);
   return  parsed.getAsJsonObject().get("issue_id").getAsInt();
