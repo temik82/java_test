@@ -9,7 +9,7 @@ import java.util.Set;
 import static org.testng.Assert.assertEquals;
 
 public class RestTests extends TestBase {
-  @Test
+  @Test(enabled = false)
   public void testCreateIssue() throws IOException {
     skipIfNotFixed(17);
 
@@ -23,7 +23,7 @@ public class RestTests extends TestBase {
 
   }
 
-  @Test(enabled = false)
+  @Test
   public void testCreateIssue1() throws IOException {
 
 

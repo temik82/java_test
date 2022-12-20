@@ -7,14 +7,13 @@ import jakarta.persistence.Table;
 
 import java.util.Objects;
 
-//@XStreamAlias("user")
 @Entity
 @Table(name = "mantis_user_table")
 public class UserData {
   @Id
   @Column(name = "id")
   private int id;
-  @Column(name="userName")
+  @Column(name="username")
   private String userName;
   @Column(name="email")
   private String email;
@@ -60,10 +59,14 @@ public class UserData {
   }
 
 
-
-
-
-
+  @Override
+  public String toString() {
+    return "UserData{" +
+            "id=" + id +
+            ", userName='" + userName + '\'' +
+            ", email='" + email + '\'' +
+            '}';
+  }
 }
 
 

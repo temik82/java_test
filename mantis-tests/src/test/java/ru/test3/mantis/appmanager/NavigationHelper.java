@@ -10,11 +10,11 @@ public class NavigationHelper extends BaseHelper {
     super(wd);
   }
 
-  public void groupPage() {
-    click(By.linkText("groups"));
+  public void managePage() {
+    click(By.linkText("Manage"));
   }
 
-  public void contactPage() {
-    click(By.linkText("home"));
+  public void manageUserPage() {
+    click(By.linkText("Manage Users"));
   }
 }

@@ -25,8 +25,10 @@ public class ApplicationManager {
   private FtpHelper ftp;
   private MailHelper mailHelper;
   private SoapHelper soapHelper;
-  private DbHelper db;
-
+  private DbHelper dbHelper;
+  private ChangePasswordHelper changePasswordHelper;
+  private SessionHelper sessionHelper;
+  private NavigationHelper navigationHelper;
 
   public ApplicationManager(String browser) {
     this.browser = browser;
@@ -39,15 +41,31 @@ public class ApplicationManager {
   public void init() throws IOException {
     String target = System.getProperty("target", "local");
     properties.load(new FileReader(new File(String.format("src/test/resources/%s.properties", target))));
-//    db=new DbHelper();
+    dbHelper = new DbHelper();
+    if (browser.equals(BrowserType.CHROME)) {
+      wd = new ChromeDriver();
+    } else if (browser.equals(BrowserType.FIREFOX)) {
+      wd = new FirefoxDriver();
+    }
+    wd.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+    wd.get(properties.getProperty("web.baseUrl"));
+    sessionHelper = new SessionHelper(wd);
+    sessionHelper.login(properties.getProperty("web.adminLogin"), properties.getProperty("web.adminPassword"));
+
   }
 
+  public DbHelper db(){
+    return dbHelper;
+  }
 
   public void stop() {
     if (wd != null) {
       wd.quit();
     }
 
+  }
+  public NavigationHelper goTo() {
+    return navigationHelper;
   }
 
   private boolean isElementPresent(By by) {
@@ -69,7 +87,12 @@ public class ApplicationManager {
     }
     return registrationHelper;
   }
-
+  public ChangePasswordHelper changePassword() {
+    if (changePasswordHelper == null) {
+      changePasswordHelper = new ChangePasswordHelper(this);
+    }
+    return changePasswordHelper;
+  }
 
   public WebDriver getDriver() {
     if (wd == null) {
@@ -105,9 +128,9 @@ public class ApplicationManager {
     }
     return mailHelper;
   }
-  public DbHelper db(){
-    return db;
-  }
+ // public DbHelper db(){
+  //  return db;
+ // }
 
   public SoapHelper soap(){
     if (soapHelper==null){
