@@ -18,6 +18,18 @@ public class UserData {
   @Column(name="email")
   private String email;
 
+  public int getAccessLevel() {
+    return accessLevel;
+  }
+
+  public UserData setAccessLevel(int accessLevel) {
+    this.accessLevel = accessLevel;
+    return this;
+  }
+
+  @Column(name="access_level")
+  private int accessLevel;
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;

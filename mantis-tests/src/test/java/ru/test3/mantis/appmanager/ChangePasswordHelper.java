@@ -11,14 +11,10 @@ public class ChangePasswordHelper extends BaseHelper {
     super(app);
   }
 
-  public String start(int id) {
-    app.goTo().managePage();
-    app.goTo().manageUserPage();
-    String userId=Integer.toString(id);
-    click(By.linkText(userId));
-    String email=wd.findElement(By.name("email")).getAttribute("value");
+  public void start(String userName) {
+    wd.get(app.getProperty("web.baseUrl")+"manage_user_page.php");
+    click(By.linkText(userName));
     click(By.cssSelector("input[value= 'Reset Password']"));
-    return email;
   }
   public String findConfirmationLink(List<MailMessage> mailMessages, String email) {
     MailMessage mailMessage = mailMessages.stream().filter((m) -> m.to.equals(email)).findFirst().get();
