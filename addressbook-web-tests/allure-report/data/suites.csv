@@ -1,0 +1,7 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"unknown","Fri Dec 23 00:24:09 MSK 2022","Fri Dec 23 00:24:09 MSK 2022","1","Suite1","Groups","ru.test2.addressbook.tests.GroupCreationTests","ru.test2.addressbook.tests.GroupCreationTests","testBadGroupCreation","testBadGroupCreation",""
+"passed","Fri Dec 23 00:24:12 MSK 2022","Fri Dec 23 00:24:12 MSK 2022","672","Suite1","Groups","ru.test2.addressbook.tests.GroupModificationTests","ru.test2.addressbook.tests.GroupModificationTests","testGroupModification","testGroupModification",""
+"passed","Fri Dec 23 00:24:12 MSK 2022","Fri Dec 23 00:24:13 MSK 2022","316","Suite1","Groups","ru.test2.addressbook.tests.GroupDeletionTests","ru.test2.addressbook.tests.GroupDeletionTests","testGroupDeletion","testGroupDeletion",""
+"passed","Fri Dec 23 00:24:09 MSK 2022","Fri Dec 23 00:24:10 MSK 2022","1056","Suite1","Groups","ru.test2.addressbook.tests.GroupCreationTests","ru.test2.addressbook.tests.GroupCreationTests","testGroupCreation","testGroupCreation",""
+"passed","Fri Dec 23 00:24:11 MSK 2022","Fri Dec 23 00:24:12 MSK 2022","627","Suite1","Groups","ru.test2.addressbook.tests.GroupCreationTests","ru.test2.addressbook.tests.GroupCreationTests","testGroupCreation","testGroupCreation",""
+"passed","Fri Dec 23 00:24:10 MSK 2022","Fri Dec 23 00:24:11 MSK 2022","646","Suite1","Groups","ru.test2.addressbook.tests.GroupCreationTests","ru.test2.addressbook.tests.GroupCreationTests","testGroupCreation","testGroupCreation",""

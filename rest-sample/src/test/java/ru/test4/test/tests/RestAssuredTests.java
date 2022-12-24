@@ -27,13 +27,16 @@ public class RestAssuredTests {
     Issue newIssue = new Issue().withSubject("test issue1").withDescription("New test issue");
     int issueId = createIssue(newIssue);
     Set<Issue> newIssues = getIssues();
+    System.out.println(newIssue);
+    System.out.println(newIssue.withId(issueId));
+
     oldIssues.add(newIssue.withId(issueId));
     assertEquals(newIssues, oldIssues);
   }
 
   private Set<Issue> getIssues() throws IOException {
 
-    String json= RestAssured.get("https://bugify.stqa.ru/api/issues.json").asString();
+    String json= RestAssured.get("https://bugify.stqa.ru/api/issues.json?limit=100").asString();
     JsonElement parsed = new JsonParser().parse(json);
     JsonElement issues = parsed.getAsJsonObject().get("issues");
 
