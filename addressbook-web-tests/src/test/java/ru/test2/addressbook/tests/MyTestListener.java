@@ -11,16 +11,20 @@ public class MyTestListener implements ITestListener {
   @Override
   public void onTestStart(ITestResult result) {
     ITestListener.super.onTestStart(result);
+    ApplicationManager app=(ApplicationManager) result.getTestContext().getAttribute("app");
+    saveScreenshot(app.takeScreenShot());
   }
 
   @Override
   public void onTestSuccess(ITestResult result) {
     ITestListener.super.onTestSuccess(result);
+    ApplicationManager app=(ApplicationManager) result.getTestContext().getAttribute("app");
+    saveScreenshot(app.takeScreenShot());
   }
 
   @Override
   public void onTestFailure(ITestResult result) {
-    
+
     ApplicationManager app=(ApplicationManager) result.getTestContext().getAttribute("app");
     saveScreenshot(app.takeScreenShot());
   }
