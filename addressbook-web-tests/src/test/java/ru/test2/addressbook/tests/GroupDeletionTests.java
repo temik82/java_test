@@ -1,7 +1,12 @@
 package ru.test2.addressbook.tests;
 
 
+import io.qameta.allure.Attachment;
+import io.qameta.allure.Step;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import ru.test2.addressbook.model.GroupData;
 import ru.test2.addressbook.model.Groups;
@@ -21,6 +26,7 @@ public class GroupDeletionTests extends TestBase {
 
 
   @Test
+
   public void testGroupDeletion() throws Exception {
     Groups before=app.db().groups();
     GroupData deletedGroup=before.iterator().next();
@@ -33,6 +39,8 @@ public class GroupDeletionTests extends TestBase {
 
   }
   @Test
+
+
   public void testGroupDeletion1() throws Exception {
     Groups before=app.db().groups();
     GroupData deletedGroup=before.iterator().next();
@@ -45,6 +53,7 @@ public class GroupDeletionTests extends TestBase {
 
   }
   @Test
+
   public void testGroupDeletion2() throws Exception {
     Groups before=app.db().groups();
     GroupData deletedGroup=before.iterator().next();
