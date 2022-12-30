@@ -61,17 +61,17 @@ public class MyTestListener implements IResultListener2 {
 
   }
 
-  @Attachment(value = "Page screenshot", type = "image/png")
-  public byte[] saveScreenshot(byte[] screenShot) {
-    return screenShot;
-  }
+//  @Attachment(value = "Page screenshot", type = "image/png",fileExtension = ".png")
+//  public byte[] saveScreenshot(byte[] screenShot) {
+//    return screenShot;
+//  }
 
-  @Override
-  public void onTestFailure(ITestResult result) {
-    ApplicationManager app=(ApplicationManager) result.getTestContext().getAttribute("app");
-    saveScreenshot(app.takeScreenShot());
-
-  }
+//  @Override
+//  public void onTestFailure(ITestResult result) {
+//    ApplicationManager app=(ApplicationManager) result.getTestContext().getAttribute("app");
+//    saveScreenshot(app.takeScreenShot());
+//
+//  }
 
 
 

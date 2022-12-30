@@ -1,11 +1,13 @@
 package ru.test2.addressbook.tests;
 
+import io.qameta.allure.Attachment;
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.MatcherAssert;
 import org.openqa.selenium.remote.BrowserType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.ITestContext;
+import org.testng.ITestResult;
 import org.testng.annotations.*;
 import ru.test2.addressbook.appmanager.ApplicationManager;
 import ru.test2.addressbook.model.GroupData;
@@ -17,7 +19,7 @@ import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.*;
-@Listeners(MyTestListener.class)
+
 public class TestBase {
   Logger logger = LoggerFactory.getLogger(TestBase.class);
 
@@ -27,7 +29,7 @@ public class TestBase {
   @BeforeSuite
   public void setUp(ITestContext context) throws Exception {
     app.init();
-    context.setAttribute("app",app);
+   // context.setAttribute("app",app);
 
   }
 
@@ -46,6 +48,8 @@ public class TestBase {
     logger.info("Stop test"+m.getName());
 
   }
+
+
 
   public void verifyGroupListInUI() {
     if (Boolean.getBoolean("verifyUI")) {

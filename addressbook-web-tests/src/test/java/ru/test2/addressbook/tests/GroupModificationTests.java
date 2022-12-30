@@ -1,5 +1,8 @@
 package ru.test2.addressbook.tests;
 
+import io.qameta.allure.Attachment;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.test2.addressbook.model.GroupData;
@@ -37,6 +40,16 @@ public class GroupModificationTests extends TestBase {
   }
 
 
+  @Attachment(value = "Page screenshot", type = "image/png")
+  public byte[] saveScreenshot(byte[] screenShot) {
+    return screenShot;
+  }
 
+  @AfterMethod
+  public void after(ITestResult result) {
+    if (!result.isSuccess()) {
+      saveScreenshot(app.takeScreenShot());
+    }
+  }
 
 }
